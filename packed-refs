@@ -1,0 +1,15 @@
+# pack-refs with: peeled fully-peeled sorted 
+ae8bb22aded68fd733af85b132fa2a414324ca68 refs/heads/dependabot/npm_and_yarn/apollo-server-2.14.2
+8077a9c3ea42e9f86326d598a61eb38f5fe48222 refs/heads/dependabot/npm_and_yarn/apollo-server-core-2.14.2
+883236ff0ca20e11c76ccc8fab79833e3f2dc679 refs/heads/dependabot/npm_and_yarn/apollo-server-express-2.14.2
+242a613526164fb1741513cab7685b596610ec2f refs/heads/dependabot/npm_and_yarn/ini-1.3.8
+457d4810b0d7913f431632fa1b655cd6955c61b2 refs/heads/dependabot/npm_and_yarn/minimist-1.2.5
+d4e1e18c62441f1d3c9af15b69c15b2f1c0f2d18 refs/heads/dependabot/npm_and_yarn/node-fetch-2.6.1
+86f98fdb280ac5efdd65edf11fa122f4f781b153 refs/heads/dependabot/npm_and_yarn/object-path-0.11.5
+45b57c656197dc014779ea52fe5735fcdeb0794f refs/heads/master
+45b57c656197dc014779ea52fe5735fcdeb0794f refs/heads/part8-1
+adbbc595026835e32df8d1e756a9cd1b7b60941e refs/heads/part8-2
+9fe5e23d18236230eedcafee717d5e637f00b888 refs/heads/part8-3
+52b9197bdcefb9d26bf5c81145a2bedac0feeb9c refs/heads/part8-4
+47ef055e814f422095af30495200da348b95b30a refs/heads/part8-5
+fad7e49b8c8f74261acb613e3f8e38afefded742 refs/heads/part8-6
