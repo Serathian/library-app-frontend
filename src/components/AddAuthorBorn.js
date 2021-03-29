@@ -30,6 +30,7 @@ const AddAuthorBorn = ({ authors }) => {
 
   return (
     <div>
+      <h3>Update an author</h3>
       <form onSubmit={submit}>
         <div>
           <Select
