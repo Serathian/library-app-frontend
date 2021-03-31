@@ -18,7 +18,7 @@ const LoginForm = ({ show, handleLogin, setError }) => {
       handleLogin(token)
       localStorage.setItem('books-user-token', token)
     }
-  }, [result.data])
+  }, [result.data, handleLogin])
 
   const submit = async (event) => {
     event.preventDefault()

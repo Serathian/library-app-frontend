@@ -4,6 +4,7 @@ import Authors from './components/Authors'
 import Books from './components/Books'
 import NewBook from './components/NewBook'
 import LoginForm from './components/LoginForm'
+import Recommended from './components/Recommended'
 
 const App = () => {
   const [page, setPage] = useState('authors')
@@ -17,7 +18,7 @@ const App = () => {
         setToken(storageToken)
       }
     }
-  })
+  }, [token])
 
   const handleLogin = (token) => {
     setToken(token)
@@ -36,22 +37,26 @@ const App = () => {
         <button onClick={() => setPage('authors')}>authors</button>
         <button onClick={() => setPage('books')}>books</button>
         {token !== null && (
-          <button onClick={() => setPage('add')}>add book</button>
+          <>
+            <button onClick={() => setPage('add')}>add book</button>
+            <button onClick={() => setPage('recommend')}>recommended</button>
+            <button onClick={() => handleLogout()}>Logout</button>
+          </>
         )}
         {token === null && (
           <button onClick={() => setPage('login')}>login</button>
         )}
-        {token !== null && (
-          <button onClick={() => handleLogout()}>Logout</button>
-        )}
       </div>
-      <LoginForm show={page === 'login'} handleLogin={handleLogin} />
+      <div>
+        {page === 'recommend' ? (
+          <Recommended show={page === 'recommend'} />
+        ) : null}
 
-      <Authors show={page === 'authors'} />
-
-      <Books show={page === 'books'} />
-
-      <NewBook show={page === 'add'} setPage={setPage} />
+        <LoginForm show={page === 'login'} handleLogin={handleLogin} />
+        <Authors show={page === 'authors'} />
+        <Books show={page === 'books'} />
+        <NewBook show={page === 'add'} setPage={setPage} />
+      </div>
     </div>
   )
 }

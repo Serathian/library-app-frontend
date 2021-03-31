@@ -15,7 +15,7 @@ const NewBook = (props) => {
     if (result.data) {
       props.setPage('books')
     }
-  }, [result.data])
+  }, [result.data, props])
 
   const submit = async (event) => {
     event.preventDefault()
