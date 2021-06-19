@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useQuery, useSubscription, useApolloClient } from '@apollo/client'
 import { ALL_BOOKS, BOOK_ADDED } from '../utils/queries'
+import Select from 'react-select'
 
-const Books = (props) => {
-  const [filter, setFilter] = useState(null)
+const Books = ({ show }) => {
+  const [selectedOption, setSelectedOption] = useState(null)
+
   const result = useQuery(ALL_BOOKS)
   const client = useApolloClient()
   const updateCacheWith = (addedBook) => {
@@ -25,7 +27,19 @@ const Books = (props) => {
     },
   })
 
-  if (!props.show) {
+  const getGenres = () => {
+    let listOfGenres = ['Show All']
+
+    result.data.allBooks.forEach((book) => {
+      listOfGenres = [...listOfGenres, ...book.genres]
+    })
+
+    listOfGenres = [...new Set(listOfGenres)]
+
+    return listOfGenres.map((g) => ({ value: g, label: g }))
+  }
+
+  if (!show) {
     return null
   } else {
     if (result.loading) {
@@ -33,19 +47,23 @@ const Books = (props) => {
     }
 
     const filteredArray = () => {
-      if (filter !== null) {
-        return result.data.allBooks.filter((b) => b.genres.includes(filter))
+      if (selectedOption !== null && selectedOption.value !== 'Show All') {
+        return result.data.allBooks.filter((b) =>
+          b.genres.includes(selectedOption.value)
+        )
       }
       return result.data.allBooks
     }
 
+    console.log('Filtered array: ', filteredArray())
+    console.log('genres: ', getGenres())
     return (
       <div>
         <h2>books</h2>
-        {filter === null ? (
+        {selectedOption === null ? (
           <h4>showing all books</h4>
         ) : (
-          <h4>filtering by genre {filter}</h4>
+          <h4>filtering by genre {selectedOption.label}</h4>
         )}
 
         <table>
@@ -64,8 +82,11 @@ const Books = (props) => {
             ))}
           </tbody>
         </table>
-        <button onClick={() => setFilter('One')}>One</button>
-        <button onClick={() => setFilter(null)}>all genres</button>
+        <Select
+          defaultValue={selectedOption}
+          onChange={setSelectedOption}
+          options={getGenres()}
+        />
       </div>
     )
   }
